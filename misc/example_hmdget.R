@@ -1,6 +1,7 @@
 # Init ------------------------------------------------
 
 library(dplyr) # data verbs, operations on subsets of data
+library(hmdget) # download data from human mortality database
 
 # System ----------------------------------------------
 
