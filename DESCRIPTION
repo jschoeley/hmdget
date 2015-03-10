@@ -7,6 +7,4 @@ Depends: R (>= 3.1.1)
 License: GPL-2
 URL: https://github.com/jschoeley/hmdget
 LazyData: true
-Imports: dplyr,
-    httr,
-    tidyr
+Imports: dplyr, httr, tidyr
