@@ -200,7 +200,7 @@ HMDapc2ac <- function (.x) {
 #'   \code{Value} column) and converts the age variable to
 #'   numeric (and in the process changing the age category
 #'   \code{110+} to 110).
-#' @importFrom dplyr %>% select_ mutate
+#' @importFrom dplyr %>% group_by do right_join select_ data_frame ungroup mutate
 #' @importFrom tidyr gather_
 HMDtidy <- function (.x, .measure) {
 
@@ -212,8 +212,12 @@ HMDtidy <- function (.x, .measure) {
           key_col = "Sex",
           value_col = .measure,
           gather_cols = c("Female", "Male", "Total")) %>%
+    # map data on 0-110 age grid
+    group_by(Country, Timeframe, Sex, Year) %>%
+    do(right_join(select_(., "Age", .measure),
+                  data_frame(Age = 0:110),
+                  by = "Age")) %>% ungroup %>%
     # data frame styling
-    select_("Country", "Timeframe", "Sex", "Year", "Age", .measure) %>%
     mutate(Country = as.factor(Country),
            Timeframe = as.factor(Timeframe),
            Sex = as.factor(Sex)) -> hmd
