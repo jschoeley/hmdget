@@ -1,6 +1,6 @@
 Package: hmdget
 Title: Download Data From Human Mortality Database
-Version: 0.0.0.9001
+Version: 0.0.0.9002
 Authors@R: person("Jonas", "Schoeley", , "j.schoeley@gmail.com", role = c("aut", "cre"))
 Description: This package provides the function \code{HMDget} to download death counts or population exposures for various countries and periods from the Human Mortality Database \code{http:\\www.mortality.org}. The data is returned in a user-friendly, readily usable format.
 Depends: R (>= 3.1.1)
