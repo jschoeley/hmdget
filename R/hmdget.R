@@ -34,7 +34,7 @@
 #'   year, age and sex in long format with numeric age
 #'   categories [data frame].
 #' @importFrom dplyr %>% group_by do
-HMDget <- function (.country, .timeframe = "pc", .measure,
+HMDget <- function (.country, .timeframe = "p+c", .measure,
                     .username, .password) {
 
   # argument parsing
