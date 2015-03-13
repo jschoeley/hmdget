@@ -4,14 +4,14 @@
 \alias{HMDget}
 \title{Download HMD data from the web}
 \usage{
-HMDget(.country, .timeframe = "pc", .measure, .username, .password)
+HMDget(.country, .timeframe = "p+c", .measure, .username, .password)
 }
 \arguments{
 \item{.country:}{3 letter country code [string, length >
 0]}
 
-\item{.timeframe:}{"c" (cohort), "p" (period)  or "c+p"
-(cohort and period) [string, length == 1]}
+\item{.timeframe:}{"c" (cohort), "p" (period)  or "p+c"
+(period and cohort) [string, length == 1]}
 
 \item{.measure:}{"Dx" (death counts) or "Nx" (exposures
 in person years) [string, length == 1]}

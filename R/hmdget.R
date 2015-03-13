@@ -24,8 +24,8 @@
 #' @export
 #' @param .country: 3 letter country code [string, length >
 #'   0]
-#' @param .timeframe: "c" (cohort), "p" (period)  or "c+p"
-#'   (cohort and period) [string, length == 1]
+#' @param .timeframe: "c" (cohort), "p" (period)  or "p+c"
+#'   (period and cohort) [string, length == 1]
 #' @param .measure: "Dx" (death counts) or "Nx" (exposures
 #'   in person years) [string, length == 1]
 #' @param .username: HMD username [string, length == 1]
