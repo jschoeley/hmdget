@@ -22,14 +22,14 @@
 #' Download HMD data from the web
 #'
 #' @export
-#' @param .country: 3 letter country code [string, length >
+#' @param .country 3 letter country code [string, length >
 #'   0]
-#' @param .timeframe: "c" (cohort), "p" (period)  or "p+c"
+#' @param .timeframe "c" (cohort), "p" (period)  or "p+c"
 #'   (period and cohort) [string, length == 1]
-#' @param .measure: "Dx" (death counts) or "Nx" (exposures
+#' @param .measure "Dx" (death counts) or "Nx" (exposures
 #'   in person years) [string, length == 1]
-#' @param .username: HMD username [string, length == 1]
-#' @param .password: HMD password [string, length == 1]
+#' @param .username HMD username [string, length == 1]
+#' @param .password HMD password [string, length == 1]
 #' @return Death counts or exposures by country, timeframe,
 #'   year, age and sex in long format with numeric age
 #'   categories [data frame].
@@ -98,11 +98,11 @@ HMDargs <- function (.x) {
 
 #' Download HMD data from the web
 #'
-#' @param .x: Country + Timeframe design matrix [data frame]
-#' @param .measure: "Dx" (death counts) or "Nx" (exposures
+#' @param .x Country + Timeframe design matrix [data frame]
+#' @param .measure "Dx" (death counts) or "Nx" (exposures
 #'   in person years) [string, length == 1]
-#' @param .username: HMD username [string, length == 1]
-#' @param .password: HMD password [string, length == 1]
+#' @param .username HMD username [string, length == 1]
+#' @param .password HMD password [string, length == 1]
 #' @return HMD web data [data frame]
 #' @importFrom httr GET authenticate content http_status
 #' @importFrom dplyr data_frame
@@ -191,7 +191,7 @@ HMDapc2ac <- function (.x) {
 #' Tidy HMD web data
 #'
 #' @param .x HMD web data [data frame]
-#' @param .measure: "Dx" (death counts) or "Nx" (exposures
+#' @param .measure "Dx" (death counts) or "Nx" (exposures
 #'   in person years) [string, length == 1]
 #' @return Tidied HMD data [data frame]
 #' @details This function takes HMD data as downloaded from

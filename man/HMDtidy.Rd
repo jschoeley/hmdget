@@ -9,7 +9,7 @@ HMDtidy(.x, .measure)
 \arguments{
 \item{.x}{HMD web data [data frame]}
 
-\item{.measure:}{"Dx" (death counts) or "Nx" (exposures
+\item{.measure}{"Dx" (death counts) or "Nx" (exposures
 in person years) [string, length == 1]}
 }
 \value{

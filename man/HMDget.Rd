@@ -7,18 +7,18 @@
 HMDget(.country, .timeframe = "p+c", .measure, .username, .password)
 }
 \arguments{
-\item{.country:}{3 letter country code [string, length >
+\item{.country}{3 letter country code [string, length >
 0]}
 
-\item{.timeframe:}{"c" (cohort), "p" (period)  or "p+c"
+\item{.timeframe}{"c" (cohort), "p" (period)  or "p+c"
 (period and cohort) [string, length == 1]}
 
-\item{.measure:}{"Dx" (death counts) or "Nx" (exposures
+\item{.measure}{"Dx" (death counts) or "Nx" (exposures
 in person years) [string, length == 1]}
 
-\item{.username:}{HMD username [string, length == 1]}
+\item{.username}{HMD username [string, length == 1]}
 
-\item{.password:}{HMD password [string, length == 1]}
+\item{.password}{HMD password [string, length == 1]}
 }
 \value{
 Death counts or exposures by country, timeframe,
