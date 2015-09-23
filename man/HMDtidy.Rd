@@ -2,28 +2,26 @@
 % Please edit documentation in R/hmdget.R
 \name{HMDtidy}
 \alias{HMDtidy}
-\title{Tidy HMD web data}
+\title{Tidy HMD Data}
 \usage{
 HMDtidy(.x, .measure)
 }
 \arguments{
-\item{.x}{HMD web data [data frame]}
+\item{.x}{HMD web data}
 
-\item{.measure}{"Dx" (death counts) or "Nx" (exposures
-in person years) [string, length == 1]}
+\item{.measure}{"Dx" (death counts), "Nx" (exposures in person years) or "mx"
+(mortality rates)}
 }
 \value{
-Tidied HMD data [data frame]
+Tidied HMD data
 }
 \description{
-Tidy HMD web data
+Tidy HMD Data
 }
 \details{
-This function takes HMD data as downloaded from
-  the web, reshapes it into long format (\code{Female},
-  \code{Male}, \code{Total} columns to \code{Sex} +
-  \code{Value} column) and converts the age variable to
-  numeric (and in the process changing the age category
-  \code{110+} to 110).
+This function takes HMD data as downloaded from the web, reshapes it
+  into long format (\code{Female}, \code{Male}, \code{Total} columns to
+  \code{Sex} + \code{Value} column) and converts the age variable to numeric
+  (and in the process changing the age category \code{110+} to 110).
 }
 

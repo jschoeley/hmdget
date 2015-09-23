@@ -1,4 +1,4 @@
-# Input -----------------------------------------------
+# Input -------------------------------------------------------------------
 
 #' HMD Country Codebook
 #'
@@ -17,22 +17,19 @@
 #'
 "hmdcbook"
 
-# Retrieval function ----------------------------------
+# Retrieval Function ------------------------------------------------------
 
-#' Download HMD data from the web
+#' Download HMD Data from the Web
 #'
 #' @export
-#' @param .country 3 letter country code [string, length >
-#'   0]
-#' @param .timeframe "c" (cohort), "p" (period)  or "p+c"
-#'   (period and cohort) [string, length == 1]
-#' @param .measure "Dx" (death counts) or "Nx" (exposures
-#'   in person years) [string, length == 1]
-#' @param .username HMD username [string, length == 1]
-#' @param .password HMD password [string, length == 1]
-#' @return Death counts or exposures by country, timeframe,
-#'   year, age and sex in long format with numeric age
-#'   categories [data frame].
+#' @param .country 3 letter country code, multiple countries allowed
+#' @param .timeframe "c" (cohort), "p" (period)  or "p+c" (period and cohort)
+#' @param .measure "Dx" (death counts), "Nx" (exposures in person years) or "mx"
+#'   (mortality rates)
+#' @param .username HMD username
+#' @param .password HMD password
+#' @return Death counts, exposures or mortality rates by country, timeframe,
+#'   year, age and sex in long format with numeric age categories.
 #' @importFrom dplyr %>% group_by do
 HMDget <- function (.country, .timeframe = "p+c", .measure,
                     .username, .password) {
@@ -61,15 +58,14 @@ HMDget <- function (.country, .timeframe = "p+c", .measure,
   return(hmd)
 }
 
-# Argument parsing, sanitizing, error check -----------
+# Argument Parsing, Sanitizing, Error Check -------------------------------
 
 #' Parse Arguments of \code{HMDget} Function
 #'
-#' @param .x \code{\link{HMDget}} arguments [list]
-#' @return Parsed arguments [list]
-#' @details This functions does error checking and
-#'   translates the function arguments of \code{\link{HMDget}} into
-#'   the needed format.
+#' @param .x \code{\link{HMDget}} arguments
+#' @return Parsed arguments
+#' @details This functions does error checking and translates the function
+#'   arguments of \code{\link{HMDget}} into the needed format.
 HMDargs <- function (.x) {
 
   # error check
@@ -83,8 +79,8 @@ HMDargs <- function (.x) {
     stop("Argument <.timeframe> length > 1.")
   if (any(!(.x$timeframe %in% c("p", "c", "p+c"))))
     stop("Argument <.timeframe> not element of ('p', 'c', 'p+c').")
-  if (any(!(.x$measure %in% c("Dx", "Nx"))))
-    stop("Argument <.measure> not element of ('Dx', 'Nx').")
+  if (any(!(.x$measure %in% c("Dx", "Nx", "mx"))))
+    stop("Argument <.measure> not element of ('Dx', 'Nx', 'mx').")
 
   # parse arguments
   if (identical(.x$timeframe, "p")) .x$timeframe <- "Period"
@@ -94,16 +90,16 @@ HMDargs <- function (.x) {
   return(.x)
 }
 
-# Download from HMD server ----------------------------
+# Download from HMD Server ------------------------------------------------
 
-#' Download HMD data from the web
+#' Connect to HMD Server and Download Data
 #'
-#' @param .x Country + Timeframe design matrix [data frame]
-#' @param .measure "Dx" (death counts) or "Nx" (exposures
-#'   in person years) [string, length == 1]
-#' @param .username HMD username [string, length == 1]
-#' @param .password HMD password [string, length == 1]
-#' @return HMD web data [data frame]
+#' @param .x Country + Timeframe design matrix
+#' @param .measure "Dx" (death counts), "Nx" (exposures in person years) or "mx"
+#'   (mortality rates)
+#' @param .username HMD username
+#' @param .password HMD password
+#' @return HMD web data
 #' @importFrom httr GET authenticate content http_status
 #' @importFrom dplyr data_frame
 HMDhttp <- function(.x, .measure, .username, .password) {
@@ -113,6 +109,9 @@ HMDhttp <- function(.x, .measure, .username, .password) {
   }
   if (identical(.measure, "Dx")) {
     file <- c(Period = "Deaths_1x1.txt", Cohort = "Deaths_lexis.txt")
+  }
+  if (identical(.measure, "mx")) {
+    file <- c(Period = "Mx_1x1.txt", Cohort = "cMx_1x1.txt")
   }
 
   # generate web adresses for data
@@ -155,25 +154,22 @@ HMDhttp <- function(.x, .measure, .username, .password) {
   return(hmd)
 }
 
-# Convert between timeframes --------------------------
+# Convert Between Timeframes ----------------------------------------------
 
 #' Convert HMD Data Between Timeframes
 #'
-#' @param .x HMD data by Lexis triangles [data frame]
-#' @return HMD data by cohort-age [data frame]
-#' @details The Human Mortality Database provides cohort
-#'   death counts in Lexis triangle format (measures by
-#'   cohort, period and age). In order to use these counts
-#'   with the cohort-age exposures provided by the HMD, the
-#'   Lexis triangle counts have to be aggregated into
-#'   cohort-age counts. This function sums up the two Lexis
-#'   triangles for each cohort-period-age-group to get
+#' @param .x HMD data by Lexis triangles
+#' @return HMD data by cohort-age
+#' @details The Human Mortality Database provides cohort death counts in Lexis
+#'   triangle format (measures by cohort, period and age). In order to use these
+#'   counts with the cohort-age exposures provided by the HMD, the Lexis
+#'   triangle counts have to be aggregated into cohort-age counts. This function
+#'   sums up the two Lexis triangles for each cohort-period-age-group to get
 #'   cohort death counts by age:
 #'
-#'   A person in cohort c and age x could have died in years
-#'   t and t+1, therefore if only the cohort death counts by
-#'   age are of interest, one must sum up the deaths of
-#'   cohort c and age x across the years t and t+1.
+#'   A person in cohort c and age x could have died in years t and t+1,
+#'   therefore if only the cohort death counts by age are of interest, one must
+#'   sum up the deaths of cohort c and age x across the years t and t+1.
 #' @importFrom dplyr %>% group_by summarise rename
 HMDapc2ac <- function (.x) {
 
@@ -186,21 +182,20 @@ HMDapc2ac <- function (.x) {
   return(result)
 }
 
-# Tidying ---------------------------------------------
+# Tidying -----------------------------------------------------------------
 
-#' Tidy HMD web data
+#' Tidy HMD Data
 #'
-#' @param .x HMD web data [data frame]
-#' @param .measure "Dx" (death counts) or "Nx" (exposures
-#'   in person years) [string, length == 1]
-#' @return Tidied HMD data [data frame]
-#' @details This function takes HMD data as downloaded from
-#'   the web, reshapes it into long format (\code{Female},
-#'   \code{Male}, \code{Total} columns to \code{Sex} +
-#'   \code{Value} column) and converts the age variable to
-#'   numeric (and in the process changing the age category
-#'   \code{110+} to 110).
-#' @importFrom dplyr %>% group_by do right_join select_ data_frame ungroup mutate
+#' @param .x HMD web data
+#' @param .measure "Dx" (death counts), "Nx" (exposures in person years) or "mx"
+#'   (mortality rates)
+#' @return Tidied HMD data
+#' @details This function takes HMD data as downloaded from the web, reshapes it
+#'   into long format (\code{Female}, \code{Male}, \code{Total} columns to
+#'   \code{Sex} + \code{Value} column) and converts the age variable to numeric
+#'   (and in the process changing the age category \code{110+} to 110).
+#' @importFrom dplyr %>% group_by do right_join select_ data_frame ungroup
+#'   mutate
 #' @importFrom tidyr gather_
 HMDtidy <- function (.x, .measure) {
 

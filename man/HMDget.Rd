@@ -2,30 +2,27 @@
 % Please edit documentation in R/hmdget.R
 \name{HMDget}
 \alias{HMDget}
-\title{Download HMD data from the web}
+\title{Download HMD Data from the Web}
 \usage{
 HMDget(.country, .timeframe = "p+c", .measure, .username, .password)
 }
 \arguments{
-\item{.country}{3 letter country code [string, length >
-0]}
+\item{.country}{3 letter country code, multiple countries allowed}
 
-\item{.timeframe}{"c" (cohort), "p" (period)  or "p+c"
-(period and cohort) [string, length == 1]}
+\item{.timeframe}{"c" (cohort), "p" (period)  or "p+c" (period and cohort)}
 
-\item{.measure}{"Dx" (death counts) or "Nx" (exposures
-in person years) [string, length == 1]}
+\item{.measure}{"Dx" (death counts), "Nx" (exposures in person years) or "mx"
+(mortality rates)}
 
-\item{.username}{HMD username [string, length == 1]}
+\item{.username}{HMD username}
 
-\item{.password}{HMD password [string, length == 1]}
+\item{.password}{HMD password}
 }
 \value{
-Death counts or exposures by country, timeframe,
-  year, age and sex in long format with numeric age
-  categories [data frame].
+Death counts, exposures or mortality rates by country, timeframe,
+  year, age and sex in long format with numeric age categories.
 }
 \description{
-Download HMD data from the web
+Download HMD Data from the Web
 }
 

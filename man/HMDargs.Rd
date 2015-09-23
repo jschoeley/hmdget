@@ -7,17 +7,16 @@
 HMDargs(.x)
 }
 \arguments{
-\item{.x}{\code{\link{HMDget}} arguments [list]}
+\item{.x}{\code{\link{HMDget}} arguments}
 }
 \value{
-Parsed arguments [list]
+Parsed arguments
 }
 \description{
 Parse Arguments of \code{HMDget} Function
 }
 \details{
-This functions does error checking and
-  translates the function arguments of \code{\link{HMDget}} into
-  the needed format.
+This functions does error checking and translates the function
+  arguments of \code{\link{HMDget}} into the needed format.
 }
 

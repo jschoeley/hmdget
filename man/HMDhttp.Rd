@@ -2,24 +2,24 @@
 % Please edit documentation in R/hmdget.R
 \name{HMDhttp}
 \alias{HMDhttp}
-\title{Download HMD data from the web}
+\title{Connect to HMD Server and Download Data}
 \usage{
 HMDhttp(.x, .measure, .username, .password)
 }
 \arguments{
-\item{.x}{Country + Timeframe design matrix [data frame]}
+\item{.x}{Country + Timeframe design matrix}
 
-\item{.measure}{"Dx" (death counts) or "Nx" (exposures
-in person years) [string, length == 1]}
+\item{.measure}{"Dx" (death counts), "Nx" (exposures in person years) or "mx"
+(mortality rates)}
 
-\item{.username}{HMD username [string, length == 1]}
+\item{.username}{HMD username}
 
-\item{.password}{HMD password [string, length == 1]}
+\item{.password}{HMD password}
 }
 \value{
-HMD web data [data frame]
+HMD web data
 }
 \description{
-Download HMD data from the web
+Connect to HMD Server and Download Data
 }
 

@@ -7,27 +7,24 @@
 HMDapc2ac(.x)
 }
 \arguments{
-\item{.x}{HMD data by Lexis triangles [data frame]}
+\item{.x}{HMD data by Lexis triangles}
 }
 \value{
-HMD data by cohort-age [data frame]
+HMD data by cohort-age
 }
 \description{
 Convert HMD Data Between Timeframes
 }
 \details{
-The Human Mortality Database provides cohort
-  death counts in Lexis triangle format (measures by
-  cohort, period and age). In order to use these counts
-  with the cohort-age exposures provided by the HMD, the
-  Lexis triangle counts have to be aggregated into
-  cohort-age counts. This function sums up the two Lexis
-  triangles for each cohort-period-age-group to get
+The Human Mortality Database provides cohort death counts in Lexis
+  triangle format (measures by cohort, period and age). In order to use these
+  counts with the cohort-age exposures provided by the HMD, the Lexis
+  triangle counts have to be aggregated into cohort-age counts. This function
+  sums up the two Lexis triangles for each cohort-period-age-group to get
   cohort death counts by age:
 
-  A person in cohort c and age x could have died in years
-  t and t+1, therefore if only the cohort death counts by
-  age are of interest, one must sum up the deaths of
-  cohort c and age x across the years t and t+1.
+  A person in cohort c and age x could have died in years t and t+1,
+  therefore if only the cohort death counts by age are of interest, one must
+  sum up the deaths of cohort c and age x across the years t and t+1.
 }
 
