@@ -25,4 +25,13 @@ Death counts, exposures or mortality rates by country, timeframe,
 \description{
 Download HMD Data from the Web
 }
+\examples{
+\dontrun{
+HMDget(.country   = "SWE",
+       .timeframe = "p",
+       .measure   = "mx",
+       .username  = "***",
+       .password  = "***")
+}
+}
 

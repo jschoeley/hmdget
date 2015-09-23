@@ -2,19 +2,15 @@
 
 #' HMD Country Codebook
 #'
-#' A dataset containing country codes and corresponing
-#' labels as used in the HMD database and webpage. Use it to
-#' specify the countries you want to download from the HMD
-#' database. \code{\link{HMDget}} only allows for country codes
+#' A dataset containing country codes and corresponing labels as used in the HMD
+#' database and webpage. Use it to specify the countries you want to download
+#' from the HMD database. \code{\link{HMDget}} only allows for country codes
 #' specified in this table in its \code{.country} argument.
 #'
-#' @format A data frame with 46 rows and 2 variables:
-#'   \describe{ \item{Code}{Country code as used in Human
-#'   Mortality Database} \item{Label}{Full country name in
-#'   English} }
-#' @source
-#' \url{http://www.mortality.org/cgi-bin/hmd/hmd_download.php}
-#'
+#' @format A data frame with 46 rows and 2 variables: \describe{
+#'   \item{Code}{Country code as used in Human Mortality Database}
+#'   \item{Label}{Full country name in English} }
+#' @source \url{http://www.mortality.org/cgi-bin/hmd/hmd_download.php}
 "hmdcbook"
 
 # Retrieval Function ------------------------------------------------------
@@ -31,6 +27,14 @@
 #' @return Death counts, exposures or mortality rates by country, timeframe,
 #'   year, age and sex in long format with numeric age categories.
 #' @importFrom dplyr %>% group_by do
+#' @examples
+#' \dontrun{
+#' HMDget(.country   = "SWE",
+#'        .timeframe = "p",
+#'        .measure   = "mx",
+#'        .username  = "***",
+#'        .password  = "***")
+#' }
 HMDget <- function (.country, .timeframe = "p+c", .measure,
                     .username, .password) {
 
