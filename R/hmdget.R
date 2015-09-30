@@ -10,6 +10,56 @@
 #' @format A data frame with 46 rows and 2 variables: \describe{
 #'   \item{Code}{Country code as used in Human Mortality Database}
 #'   \item{Label}{Full country name in English} }
+#' \tabular{ll}{
+#'  Code \tab Label \cr
+#'  AUS \tab Australia \cr
+#'  AUT \tab Austria \cr
+#'  BLR \tab Belarus \cr
+#'  BEL \tab Belgium \cr
+#'  BGR \tab Bulgaria \cr
+#'  CAN \tab Canada \cr
+#'  CHL \tab Chile \cr
+#'  CZE \tab Czech Republic \cr
+#'  DNK \tab Denmark \cr
+#'  EST \tab Estonia \cr
+#'  FIN \tab Finland \cr
+#'  FRATNP \tab France (total population) \cr
+#'  FRACNP \tab France (civilian population) \cr
+#'  DEUTNP \tab Germany (total population) \cr
+#'  DEUTE \tab Germany (east) \cr
+#'  DEUTW \tab Germany (west) \cr
+#'  GRC \tab Greece \cr
+#'  HUN \tab Hungary \cr
+#'  ISL \tab Iceland \cr
+#'  IRL \tab Ireland \cr
+#'  ISR \tab Israel \cr
+#'  ITA \tab Italy \cr
+#'  JPN \tab Japan \cr
+#'  LVA \tab Latvia \cr
+#'  LTU \tab Lithuania \cr
+#'  LUX \tab Luxembourg \cr
+#'  NLD \tab Netherlands \cr
+#'  NZL_NP \tab New Zealand (total population) \cr
+#'  NZL_MA \tab New Zealand (Maori population) \cr
+#'  NZL_NM \tab New Zealand (non-Maori population) \cr
+#'  NOR \tab Norway \cr
+#'  POL \tab Poland \cr
+#'  PRT \tab Portugal \cr
+#'  RUS \tab Russia \cr
+#'  SVK \tab Slovakia \cr
+#'  SVN \tab Slovenia \cr
+#'  ESP \tab Spain \cr
+#'  SWE \tab Sweden \cr
+#'  CHE \tab Switzerland \cr
+#'  TWN \tab Taiwan \cr
+#'  GBR_NP \tab United Kingdom \cr
+#'  GBRTENW \tab England & Wales (total population) \cr
+#'  GBRCENW \tab England & Wales (civilian population) \cr
+#'  GBR_SCO \tab Scotland \cr
+#'  GBR_NIR \tab Northern Ireland \cr
+#'  USA \tab U.S.A. \cr
+#'  UKR \tab Ukraine
+#'}
 #' @source \url{http://www.mortality.org/cgi-bin/hmd/hmd_download.php}
 "hmdcbook"
 
@@ -18,7 +68,8 @@
 #' Download HMD Data from the Web
 #'
 #' @export
-#' @param .country 3 letter country code, multiple countries allowed
+#' @param .country HMD country code as found in \code{\link{hmdcbook}}, multiple
+#'   countries allowed
 #' @param .timeframe "c" (cohort), "p" (period)  or "p+c" (period and cohort)
 #' @param .measure "Dx" (death counts), "Nx" (exposures in person years) or "mx"
 #'   (mortality rates)

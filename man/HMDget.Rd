@@ -7,7 +7,8 @@
 HMDget(.country, .timeframe = "p+c", .measure, .username, .password)
 }
 \arguments{
-\item{.country}{3 letter country code, multiple countries allowed}
+\item{.country}{HMD country code as found in \code{\link{hmdcbook}}, multiple
+countries allowed}
 
 \item{.timeframe}{"c" (cohort), "p" (period)  or "p+c" (period and cohort)}
 
