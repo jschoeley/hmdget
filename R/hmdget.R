@@ -150,10 +150,7 @@ HMDargs <- function (.x) {
 #' Connect to HMD Server and Download Data
 #'
 #' @param .x Country + Timeframe design matrix
-#' @param .measure "Dx" (death counts), "Nx" (exposures in person years) or "mx"
-#'   (mortality rates)
-#' @param .username HMD username
-#' @param .password HMD password
+#' @inheritParams HMDget
 #' @return HMD web data
 #' @importFrom httr GET authenticate content http_status
 #' @importFrom dplyr data_frame
@@ -242,8 +239,7 @@ HMDapc2ac <- function (.x) {
 #' Tidy HMD Data
 #'
 #' @param .x HMD web data
-#' @param .measure "Dx" (death counts), "Nx" (exposures in person years) or "mx"
-#'   (mortality rates)
+#' @inheritParams HMDget
 #' @return Tidied HMD data
 #' @details This function takes HMD data as downloaded from the web, reshapes it
 #'   into long format (\code{Female}, \code{Male}, \code{Total} columns to
