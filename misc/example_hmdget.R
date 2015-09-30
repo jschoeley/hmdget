@@ -1,6 +1,6 @@
 # Init ------------------------------------------------
 
-library(dplyr) # data verbs, operations on subsets of data
+library(dplyr)  # data verbs, operations on subsets of data
 library(hmdget) # download data from human mortality database
 
 # System ----------------------------------------------
@@ -23,9 +23,9 @@ Nx <- HMDget(hmdcbook$Code, .timeframe = "p+c", .measure = "Nx",
 mx <- HMDget(hmdcbook$Code, .timeframe = "p+c", .measure = "mx",
              .username = username, .password = password)
 
-
 # check
 Dx %>% filter(Country == "GBRCENW", Year == 1939, Age == 100)
+Nx %>% filter(Country == "POL", Year == 1939, Age == 40)
 mx %>% filter(Country == "SWE", Year == 1900, Age == 100)
 
 # join Dx and Nx, remove rows with NAs
