@@ -152,7 +152,7 @@ HMDargs <- function (.x) {
 #' @param .x Country + Timeframe design matrix
 #' @inheritParams HMDget
 #' @return HMD web data
-#' @importFrom httr GET authenticate content http_status
+#' @importFrom httr GET authenticate content status_code
 #' @importFrom dplyr data_frame
 HMDhttp <- function(.x, .measure, .username, .password) {
 
@@ -182,7 +182,7 @@ HMDhttp <- function(.x, .measure, .username, .password) {
              authenticate(user = .username, password = .password))
 
   # if connection is successful, then
-  if (identical(http_status(hmd)$category, "success")) {
+  if (identical(status_code(hmd) %/% 100, 2)) {
     # read data to table
     hmd <- content(hmd, as = "text")
     hmd <- read.table(textConnection(hmd),
